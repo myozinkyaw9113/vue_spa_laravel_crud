@@ -1,0 +1,13 @@
+composer create pj
+composer require laravel ui
+php artisan ui vue
+npm install 
+npm install && npm run dev
+npm install sweetalert2
+npm install laravel-vue-pagination
+npm install vform => for validate
+npm install vue-progressbar
+
+php artisan migrate
+if u need data => php artisan db:seed
+
