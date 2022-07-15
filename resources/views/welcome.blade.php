@@ -17,11 +17,7 @@
     </head>
     <body>
 
-        <div id="app" class="container">
-
-            <example-component/>
-
-        </div>
+        <div id="app" class="container"></div>
 
     </body>
     <script src="{{ mix('js/app.js') }}"></script>

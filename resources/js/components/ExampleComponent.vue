@@ -3,7 +3,7 @@
     <div class="row mx-3 my-5">
 
         <!-- set progressbar -->
-        <vue-progress-bar></vue-progress-bar>
+        <!-- <vue-progress-bar></vue-progress-bar> -->
 
         <div class="col-md-4 line-right">
 
@@ -44,7 +44,7 @@
                 <div>
 
                     <div v-if="isLoad" class="d-flex justify-content-center align-items-center" style="height:70vh;">
-                        <loading-component/>
+                        <loading-component></loading-component>
                     </div>
 
                     <div v-else>
@@ -92,28 +92,29 @@
 </template>
 
 <script>
+import app from './../app.js'
 import axios from 'axios';
 import { Form } from 'vform'
 import Swal from 'sweetalert2'
 import LoadingComponent from './LoadingComponent.vue';
-import VueProgressBar from 'vue-progressbar';
+// import VueProgressBar from 'vue-progressbar';
 
-const options = {
-  color: '#0d6efd',
-  failedColor: '#FF0000',
-  thickness: '5px',
-  transition: {
-    speed: '0.9s',
-    opacity: '1s',
-    termination: 300
-  },
-  location: 'top',
-}
+// const options = {
+//   color: '#0d6efd',
+//   failedColor: '#FF0000',
+//   thickness: '5px',
+//   transition: {
+//     speed: '0.9s',
+//     opacity: '1s',
+//     termination: 300
+//   },
+//   location: 'top',
+// }
 
-Vue.use(VueProgressBar, options)
+// app.use(VueProgressBar, options)
 export default {
     components: { 
-        LoadingComponent
+        'loading-component' : LoadingComponent
     },
     name : 'ExampleComponent',
     data() {
@@ -148,15 +149,15 @@ export default {
             })
         },
         getData() {
-            this.$Progress.start();
-            axios.get('http://spa.test/api/product')
+            // this.$Progress.start();
+            axios.get('http://127.0.0.1:8000/api/product')
             .then(res=>{
             this.products = res.data.data;
-            this.$Progress.finish();
+            // this.$Progress.finish();
             this.isLoad = false;
             })
             .catch(err => {
-                this.$Progress.fail();
+                // this.$Progress.fail();
             });
         },
         create() {
@@ -166,7 +167,7 @@ export default {
             this.product.price = '';
         },
         store() {
-            this.product.post('http://spa.test/api/product')
+            this.product.post('http://127.0.0.1:8000/api/product')
             .then(res => {
                 this.getData();
                 this.success();
@@ -180,7 +181,7 @@ export default {
             this.product.price = p.price;
         },
         update() {
-            this.product.put(`http://spa.test/api/product/${this.product.id}`)
+            this.product.put(`http://127.0.0.1:8000/api/product/${this.product.id}`)
             .then(res => {
                 this.getData();
                 this.success();
@@ -198,7 +199,7 @@ export default {
             confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://spa.test/api/product/${p.id}`)
+                axios.delete(`http://127.0.0.1:8000/api/product/${p.id}`)
                 .then(res => {
                     this.getData();
                     this.create();
@@ -213,7 +214,7 @@ export default {
         },
         searchProduct() {
             this.isLoad = true;
-            axios.get(`http://spa.test/api/product?search=` + this.search)
+            axios.get(`http://127.0.0.1:8000/api/product?search=` + this.search)
             .then(res=>{
             this.products = res.data.data;
             this.isLoad = false;
