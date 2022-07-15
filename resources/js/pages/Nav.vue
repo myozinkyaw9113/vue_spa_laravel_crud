@@ -7,9 +7,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex" role="search">
-                    <router-link to="/products" class="navbar-brand">Products</router-link>
-                    <router-link to="/login" class="navbar-brand">Login</router-link>
-                    <router-link to="/register" class="navbar-brand">Register</router-link>
+                    <router-link to="/products" class="nav-link">Products</router-link>
+                    <router-link to="/login" class="nav-link">Login</router-link>
+                    <router-link to="/register" class="nav-link">Register</router-link>
                 </div>
             </div>
         </div>

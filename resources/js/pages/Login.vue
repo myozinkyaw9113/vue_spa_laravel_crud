@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto m-5" style="max-width:576px">
         <div class="shadow p-5 mb-5 bg-body rounded">
-            <h1 class="mb-4 text-center">Sign In</h1>
+            <h1 class="mb-4 text-center">Sign In {{ firstName }}</h1>
             <form>
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
@@ -22,7 +22,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-    name : 'Login'
+    name : 'Login',
+    computed : {
+        ...mapState('auth', {
+            firstName : (state) => state.name
+        })
+    }
 }
 </script>
