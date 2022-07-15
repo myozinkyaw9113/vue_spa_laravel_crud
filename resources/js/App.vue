@@ -1,13 +1,14 @@
 <template>
-    <example-component></example-component>
+    <nav-bar></nav-bar>
+    <router-view></router-view>
 </template>
 
 <script>
-import ExampleComponent from './components/ExampleComponent.vue';
+import Nav from './pages/Nav.vue'
 export default {
     name : 'App',
     components : {
-        'example-component' : ExampleComponent
+        'nav-bar' : Nav
     }
 }
 </script>

@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import app from './../app.js'
+import app from '../app.js'
 import axios from 'axios';
 import { Form } from 'vform'
 import Swal from 'sweetalert2'
