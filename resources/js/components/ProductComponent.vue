@@ -38,6 +38,7 @@
                     <form @submit.prevent="searchProduct" class="d-flex gap-1">
                         <input type="search" name="search" v-model="search" class="form-control w-32" placeholder="Search here...">
                         <input type="submit" class="btn btn-primary" value="Search">
+                        <button type="button" @click="getData()" class="btn btn-warning">Reset</button>
                     </form>
                 </div>
 
