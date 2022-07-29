@@ -9,19 +9,17 @@
 
            <div class="p-3">
 
-                <h1>{{ isEditMode ? 'Edit Product' : 'Create Product' }}</h1>
+                <h1>{{ isEditMode ? $t('edit_product') : $t('create_product') }}</h1>
                 <form @submit.prevent="isEditMode ? update() : store()">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" v-model="product.name" placeholder="name">
+                        <input type="text" class="form-control" id="name" v-model="product.name" :placeholder="$t('name')">
                         
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="price" v-model="product.price" placeholder="price">
+                        <input type="number" class="form-control" id="price" v-model="product.price" :placeholder="$t('price')">
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="form-control btn-primary">{{ isEditMode ? 'Update' : 'Insert' }}</button>
+                        <button type="submit" class="form-control btn-primary">{{ isEditMode ? $t('edit') : $t('create') }}</button>
                     </div>
                 </form>
 
@@ -34,11 +32,11 @@
             <div class="m-3"> 
 
                 <div class="d-flex justify-content-between align-items-center pb-3 line-bottom">
-                    <button @click="create" class="btn btn-success"><i class='bx bx-plus-circle text-white px-1'></i>Create</button>
+                    <button @click="create" class="btn btn-success"><i class='bx bx-plus-circle text-white px-1'></i>{{ $t('create') }}</button>
                     <form @submit.prevent="searchProduct" class="d-flex gap-1">
-                        <input type="search" name="search" v-model="search" class="form-control w-32" placeholder="Search here...">
-                        <input type="submit" class="btn btn-primary" value="Search">
-                        <button type="button" @click="getData()" class="btn btn-warning">Reset</button>
+                        <input type="search" name="search" v-model="search" class="form-control w-32" :placeholder="$t('search_here')">
+                        <input type="submit" class="btn btn-primary" :value="$t('search')">
+                        <button type="button" @click="getData()" class="btn btn-warning">{{ $t('reset') }}</button>
                     </form>
                 </div>
 
@@ -53,9 +51,9 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">{{ $t('name') }}</th>
+                                    <th scope="col">{{ $t('price') }}</th>
+                                    <th scope="col">{{ $t('action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,8 +61,8 @@
                                     <td scope="row">{{ p.name }}</td>
                                     <td>${{ p.price }}</td>
                                     <td>
-                                        <button @click="edit(p)" class="btn btn-warning"><i class='bx bxs-edit text-white px-1' ></i>Edit</button>
-                                        <button @click="destroy(p)" class="btn btn-danger"><i class='bx bx-trash text-white px-1' ></i>Delete</button>
+                                        <button @click="edit(p)" class="btn btn-warning"><i class='bx bxs-edit text-white px-1' ></i>{{ $t('edit') }}</button>
+                                        <button @click="destroy(p)" class="btn btn-danger"><i class='bx bx-trash text-white px-1' ></i>{{ $t('delete') }}</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -131,6 +129,10 @@ export default {
         }
     },
     methods: {
+        setLocale(locale) {
+            this.$i18n.locale = locale
+            localStorage.setItem('locale', locale)
+        },
         success() {
             const Toast = Swal.mixin({
             toast: true,

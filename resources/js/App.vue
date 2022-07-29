@@ -9,6 +9,13 @@ export default {
     name : 'App',
     components : {
         'nav-bar' : Nav
+    },
+
+    created() {
+        const locale = localStorage.getItem('locale');
+        if (locale) {
+            this.$i18n.locale = locale
+        }
     }
 }
 </script>

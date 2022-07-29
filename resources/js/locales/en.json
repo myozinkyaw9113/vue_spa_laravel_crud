@@ -1,0 +1,23 @@
+{
+    "login" : "Login",
+    "register" : "Register",
+    "username" : "Username",
+    "email" : "Email",
+    "password" : "Password",
+    "confirm_password" : "Confirm Password",
+
+    "spa" : "Single Page Application",
+    "products" : "Products",
+    "create_product" : "Create Product",
+    "edit_product" : "Edit Product",
+    "create" : "Create",
+    "edit" : "Edit",
+    "update" : "Update",
+    "delete" : "Delete",
+    "search" : "Search",
+    "reset" : "Reset",
+    "search_here" : "Search here",
+    "name" : "Name",
+    "price" : "Price",
+    "action" : "Action"
+}
